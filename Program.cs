@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq; // Necessário para usar FirstOrDefault
 
@@ -113,7 +113,7 @@ namespace ControleAcesso
                 // Apenas administrador pode ver histórico
                 if (logado.Nivel == NivelAcesso.Administrador)
                 {
-                    SimularMovimentacoes();
+                    SimularMovimentacoes(logado);
                     ExibirHistorico();
                 }
                 else
@@ -236,12 +236,12 @@ namespace ControleAcesso
         }
 
         // Simula acessos ao sistema
-        static void SimularMovimentacoes()
+        static void SimularMovimentacoes(Usuario user)
         {
             HistoricoGeral.Add(
                 new RegistroAcesso
                 {
-                    NomeUsuario = "",
+                    NomeUsuario = user.Nome, //Puxa o nome de quem logou
                     Area = "Data Center",
                     DataHora = DateTime.Now.AddMinutes(-10),
                     Autorizado = false
@@ -251,7 +251,7 @@ namespace ControleAcesso
             HistoricoGeral.Add(
                 new RegistroAcesso
                 {
-                    NomeUsuario = "",
+                    NomeUsuario = user.Nome, //Puxa o nome de quem logou
                     Area = "Data Center",
                     DataHora = DateTime.Now.AddMinutes(-5),
                     Autorizado = true
