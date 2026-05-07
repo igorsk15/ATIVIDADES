@@ -1,0 +1,21 @@
+# 🏢 Sistema de Controle de Acesso
+
+Um sistema de console desenvolvido em C# para gerenciar e registrar o acesso físico de funcionários a diferentes áreas de um edifício, baseado em níveis de permissão (RBAC simplificado).
+
+## 📋 Funcionalidades
+
+- **Cadastro de Usuários:** Criação de perfis com nome, senha e nível de acesso.
+- **Autenticação:** Sistema de login simples validando credenciais.
+- **Controle de Acesso:** Verificação hierárquica (Nível do Usuário vs. Nível da Área).
+- **Registro de Histórico:** Geração de logs automáticos com data, hora, área e status (Autorizado/Negado).
+- **Proteção de Dados:** Apenas usuários com nível Administrador podem visualizar o histórico de movimentações.
+
+---
+
+## 🚀 Como Executar
+
+Certifique-se de ter o [.NET SDK](https://dotnet.microsoft.com/download) instalado em sua máquina.
+
+1. Clone este repositório:
+   ```bash
+   git clone [https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git](https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git)
