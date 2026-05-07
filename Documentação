@@ -18,4 +18,33 @@ Certifique-se de ter o [.NET SDK](https://dotnet.microsoft.com/download) instala
 
 1. Clone este repositório:
    ```bash
-   git clone [https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git](https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git)
+   git clone [https://github.com/igorsk15/ATIVIDADES.git](https://github.com/igorsk15/ATIVIDADES.git)
+
+2. Navegue até a pasta do projeto:
+Bash
+cd nome-da-pasta
+
+3. Execute a aplicação:
+Bash
+dotnet run
+
+====================================
+
+🏗️ Decisões de Projeto
+1. Estrutura de Dados Utilizada
+O sistema foi desenvolvido sob o paradigma de Orientação a Objetos. Foram criadas classes para representar as entidades principais: Usuario, Area e RegistroAcesso.
+Para o armazenamento temporário durante a execução, utilizamos Coleções Genéricas (List<T>). As listas BancoUsuarios e HistoricoGeral atuam como tabelas em memória, permitindo operações de inserção e consulta rápidas.
+
+2. Modelagem de Permissões
+As permissões foram modeladas utilizando o conceito de controle de acesso baseado em papéis (RBAC). Utilizamos um enum chamado NivelAcesso com valores inteiros progressivos: visitante = 1, Funcionario = 2 e Administrador = 3.
+A lógica de validação ocorre comparando o nível do usuário com o nível mínimo exigido pela área (usuario.Nivel >= area.NivelMinimo). Isso elimina a necessidade de comandos complexos e facilita a escalabilidade do sistema.
+
+3. Tratamento de Exceções e Entradas Inválidas
+Para evitar que o sistema encerre abruptamente por erro de digitação do usuário, foi utilizado o método int.TryParse() na captura do nível de acesso. Caso a entrada seja inválida, o sistema atribui o nível mais restritivo (Visitante) por padrão. O login também lida com buscas não encontradas utilizando FirstOrDefault, retornando null de forma segura sem lançar exceções fatais (NullReferenceException).
+
+4. Possíveis Melhorias Futuras
+Persistência de Dados: Integração com um banco de dados relacional (como MySQL) utilizando o Entity Framework Core.
+
+Segurança Avançada: Implementação de algoritmos de Hash (como BCrypt ou SHA-256) para as senhas.
+
+Restrições Temporais: Adicionar validação de horários, permitindo que funcionários acessem certas áreas apenas durante o horário comercial.
